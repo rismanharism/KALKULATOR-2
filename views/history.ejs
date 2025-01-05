@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculation History</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Calculation History</h1>
+    
+    <% if (history.length === 0) { %>
+      <p>No history available</p>
+    <% } else { %>
+      <ul>
+        <% history.forEach(item => { %>
+          <li>
+            <%= item.operation %>
+            <!-- Tombol untuk menghapus riwayat per item -->
+            <form action="/delete-history/<%= item.id %>" method="POST" style="display:inline;">
+              <button type="submit" style="background-color: red; color: white;">Delete</button>
+            </form>
+          </li>
+        <% }) %>
+      </ul>
+    <% } %>
+    
+        <!-- Tombol untuk menghapus riwayat -->
+        <form action="/clear-history" method="POST">
+          <button type="submit" style="background-color: red; color: white;">Clear History</button>
+        </form>
+
+    <a href="/">Go Back</a>
+  </div>
+</body>
+</html>

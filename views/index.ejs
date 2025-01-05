@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Calculator</h1>
+
+    <% if (typeof error !== 'undefined') { %>
+      <p class="error"><%= error %></p>
+    <% } %>
+
+    <form action="/calculate" method="POST">
+      <input type="number" name="num1" step="any" placeholder="masukan angka pertama" required>
+      <select name="operation">
+        <option value="+">tambah+</option>
+        <option value="-">kurang-</option>
+        <option value="*">kali*</option>
+        <option value="/">bagi/</option>
+      </select>
+      <input type="number" name="num2" step="any" placeholder="masukan angka kedua" required>
+      <button type="submit">Calculate</button>
+    </form>
+
+    <% if (result !== undefined) { %>
+      <p class="result">Result: <%= result %></p>
+    <% } %>
+
+    <a href="/history">History</a>
+  </div>
+</body>
+</html>
